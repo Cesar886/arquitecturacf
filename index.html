@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio de Arquitectura EACF | Arquitectura ACF - Tavernes de la Valldigna</title>
+  <meta name="description" content="Estudio de Arquitectura en Tavernes de la Valldigna, Valencia. Project Management, Tasaciones, Certificados Energéticos, Inmobiliaria. +34 962 04 49 20">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.75rem; }
+    }
+
+    /* ========== HEADER / NAV ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(12px);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: #c9a84c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .header.scrolled .logo-text { color: #1a1a1a; }
+    .logo-text span { color: #c9a84c; }
+    .header.scrolled .logo-text span { color: #c9a84c; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #c9a84c;
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .header.scrolled .nav-links a { color: #333; }
+    .nav-links a:hover { color: #c9a84c; }
+
+    .nav-cta {
+      background: #c9a84c;
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: #b89638 !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .menu-toggle span {
+      width: 26px;
+      height: 2.5px;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .header.scrolled .menu-toggle span { background: #1a1a1a; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #1a1a1a;
+        flex-direction: column;
+        padding: 100px 40px 40px;
+        gap: 24px;
+        transition: right 0.4s ease;
+        align-items: flex-start;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { color: rgba(255, 255, 255, 0.9) !important; font-size: 1rem; }
+      .menu-toggle { display: flex; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: #111;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.30) 100%),
+        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"%3E%3Crect fill="%232a2a2a" width="1600" height="900"/%3E%3Cg opacity="0.08"%3E%3Cpath fill="%23c9a84c" d="M0 700L200 500L400 700L600 400L800 650L1000 450L1200 600L1400 350L1600 500L1600 900L0 900Z"/%3E%3Cpath fill="%23c9a84c" d="M0 800L200 600L400 800L600 550L800 750L1000 600L1200 750L1400 500L1600 700L1600 900L0 900Z" opacity="0.5"/%3E%3C/g%3E%3C/svg%3E') center/cover no-repeat;
+      background-color: #1a1a1a;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #c9a84c;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #c9a84c;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: 3.75rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    .hero h2 {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #c9a84c;
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #b89638;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-outline:hover {
+      border-color: #c9a84c;
+      color: #c9a84c;
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll .arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+      transform: rotate(45deg);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero h2 { font-size: 1rem; }
+      .hero p { font-size: 0.95rem; }
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      padding: 100px 0 80px;
+      background: #fafafa;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #c9a84c;
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .about-image {
+      position: relative;
+      z-index: 1;
+      background: #e8e0d0;
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .about-image svg {
+      width: 60%;
+      height: 60%;
+      opacity: 0.3;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #c9a84c;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 4px;
+    }
+    .about-text p {
+      color: #555;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .services-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+    .services-header p {
+      color: #666;
+      font-size: 1rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 36px 28px;
+      transition: all 0.4s;
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: #c9a84c;
+      transition: height 0.4s;
+    }
+    .service-card:hover {
+      border-color: #e8e0d0;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: #f0e8d8;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #c9a84c;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 992px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== IEE / AYUDAS ========== */
+    .iee-section {
+      padding: 80px 0;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .iee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .iee-content .section-label { color: #c9a84c; }
+    .iee-content .section-title { color: #fff; }
+    .iee-content p {
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    .iee-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .iee-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .iee-feature svg {
+      flex-shrink: 0;
+      color: #c9a84c;
+    }
+    .iee-card-highlight {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px;
+      padding: 36px;
+    }
+    .iee-card-highlight h4 {
+      font-size: 1.1rem;
+      color: #c9a84c;
+      margin-bottom: 12px;
+    }
+    .iee-card-highlight p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .iee-highlight-stat {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #c9a84c;
+    }
+    .iee-highlight-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .iee-grid { grid-template-columns: 1fr; }
+      .iee-features { grid-template-columns: 1fr; }
+    }
+
+    /* ========== CONTACT ========== */
+    .contact {
+      padding: 100px 0;
+      background: #fafafa;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .contact-info > p {
+      color: #666;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a84c;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .contact-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 2px;
+    }
+    .contact-item p, .contact-item a {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .contact-item a:hover { color: #c9a84c; }
+
+    .contact-form {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    }
+    .contact-form h3 {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #333;
+      background: #fafafa;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #c9a84c;
+      background: #fff;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #c9a84c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: #b89638; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ========== MAP ========== */
+    .map-section {
+      height: 400px;
+      background: #e8e0d0;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.3);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #111;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo-text {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      margin-top: 14px;
+      max-width: 280px;
+      line-height: 1.7;
+    }
+    .footer h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #c9a84c; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a { color: rgba(255, 255, 255, 0.5); }
+    .footer-bottom a:hover { color: #c9a84c; }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== MOBILE OVERLAY ========== */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 998;
+    }
+    .nav-overlay.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">ACF</div>
+        <span class="logo-text">Arquitectura <span>ACF</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">Estudio</a>
+        <a href="#services">Servicios</a>
+        <a href="#iee">IEE &amp; Ayudas</a>
+        <a href="#contact">Contacto</a>
+        <a href="#contact" class="nav-cta">Solicitar presupuesto</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Estudio de Arquitectura en Tavernes de la Valldigna</div>
+      <h1>Diseñamos espacios<br>con <em>propósito</em></h1>
+      <h2>Arquitectura · Project Management · Certificados Energéticos</h2>
+      <p>Más de 15 años transformando ideas en proyectos reales. En Arquitectura ACF creemos que el asesoramiento correcto empieza con una relación de confianza.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Solicitar reunión</a>
+        <a href="#services" class="btn btn-outline">Nuestros servicios</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Descubrir</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image">
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="40" y="100" width="120" height="150" stroke="#c9a84c" stroke-width="2" fill="none"/>
+              <rect x="180" y="60" width="100" height="190" stroke="#c9a84c" stroke-width="2" fill="none"/>
+              <rect x="300" y="130" width="80" height="120" stroke="#c9a84c" stroke-width="2" fill="none"/>
+              <line x1="160" y1="175" x2="180" y2="155" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4"/>
+              <line x1="280" y1="155" x2="300" y2="155" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4"/>
+              <text x="100" y="230" fill="#aaa" font-size="10" text-anchor="middle">Proyectos</text>
+              <text x="230" y="230" fill="#aaa" font-size="10" text-anchor="middle">Dirección</text>
+              <text x="340" y="230" fill="#aaa" font-size="10" text-anchor="middle">Tasaciones</text>
+            </svg>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Proyectos realizados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Clientes satisfechos</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">Sobre nosotros</span>
+          <h2 class="section-title">El consejo correcto empieza con una relación de confianza</h2>
+          <p>En <strong>Arquitectura ACF</strong> creemos que el asesoramiento es más que un simple plan. Se trata de tener el plan correcto para ti. Nuestro equipo de arquitectos con amplia experiencia ofrece un servicio integral que abarca desde el diseño conceptual hasta la ejecución final de la obra.</p>
+          <p>Con sede en <strong>Tavernes de la Valldigna</strong>, en pleno corazón de la comarca de La Safor (Valencia), trabajamos tanto a nivel local como provincial, adaptándonos a las necesidades específicas de cada cliente.</p>
+          <p>Nuestra filosofía se basa en la <strong>transparencia</strong>, el <strong>compromiso</strong> y la <strong>calidad</strong> en cada proyecto, por pequeño que sea. Porque cada espacio cuenta una historia, y la tuya merece ser contada con excelencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label">Servicios</span>
+        <h2 class="section-title">Soluciones integrales de arquitectura</h2>
+        <p>Ofrecemos un acompañamiento completo en todas las fases de tu proyecto, desde la idea inicial hasta la entrega final.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M9 8l3-3 3 3M12 5v10"/><rect x="4" y="10" width="16" height="11" rx="1"/></svg>
+          </div>
+          <h3>Proyectos de Arquitectura</h3>
+          <p>Diseño y redacción de proyectos de obra nueva, reformas, rehabilitación y ampliaciones. Gestionamos licencias y tramitación municipal completa.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Project Management</h3>
+          <p>Gestión integral de proyectos: planificación, coordinación de equipos, control de costes y plazos. Acompañamos tu inversión de principio a fin.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Certificados Energéticos</h3>
+          <p>Certificación de eficiencia energética para viviendas y locales. Obligatorio para venta y alquiler. Rápida tramitación y registro oficial.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Tasaciones e Inmobiliaria</h3>
+          <p>Valoraciones inmobiliarias profesionales para compraventa, herencias, hipotecas o seguros. Asesoramiento integral en el mercado inmobiliario.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Informes y Dictámenes</h3>
+          <p>Elaboración de informes técnicos, dictámenes periciales, inspecciones técnicas y estudios de viabilidad para particulares y empresas.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>IEE &amp; Ayudas Económicas</h3>
+          <p>Informe de Evaluación de la Edificación (IEE) para edificios de más de 50 años. Gestionamos las subvenciones disponibles y tramitamos las ayudas.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IEE / AYUDAS ===== -->
+  <section class="iee-section" id="iee">
+    <div class="container">
+      <div class="iee-grid">
+        <div class="iee-content">
+          <span class="section-label">IEE &amp; Ayudas</span>
+          <h2 class="section-title">Informe de Evaluación de la Edificación</h2>
+          <p>Toda edificación de más de 50 años debe realizar el <strong>Informe de Evaluación de la Edificación (IEE)</strong>. Este documento es obligatorio y debe presentarse ante el Ayuntamiento correspondiente.</p>
+          <p>En Arquitectura ACF te ayudamos a cumplir con esta obligación de manera rápida y eficiente, gestionando también las <strong>ayudas económicas</strong> disponibles para sufragar su coste.</p>
+          <div class="iee-features">
+            <div class="iee-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Precio subvencionado hasta el <strong>50%</strong>
+            </div>
+            <div class="iee-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Tramitación gratuita de ayudas
+            </div>
+            <div class="iee-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Gestión municipal completa
+            </div>
+            <div class="iee-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Asesoramiento personalizado
+            </div>
+          </div>
+        </div>
+        <div class="iee-card-highlight">
+          <h4>Subvenciones disponibles</h4>
+          <p>El precio del IEE está subvencionado al 50% hasta nueva convocatoria. Tramitamos gratuitamente las ayudas al IEE para que no tengas que preocuparte de nada.</p>
+          <div style="display:flex; align-items:baseline; gap:4px; margin-bottom:20px;">
+            <span class="iee-highlight-stat">50%</span>
+            <span class="iee-highlight-label">de subvención</span>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="font-size:0.85rem; padding:12px 28px;">Solicitar información</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Contacto</span>
+          <h3>Háblanos de tu proyecto</h3>
+          <p>Estaremos encantados de atenderte y ofrecerte un presupuesto personalizado sin compromiso. ¿Hablamos?</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4>Dirección</h4>
+                <p>Passeig Colon, 36<br>46760 Tavernes de la Valldigna, Valencia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <h4>Teléfono</h4>
+                <a href="tel:+34962044920">+34 962 04 49 20</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4>Horario</h4>
+                <p>Lunes a Viernes: 9:00 – 14:00 y 15:30 – 19:00</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:info@arquitecturacf.es">info@arquitecturacf.es</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos pronto.');">
+          <h3>Solicita tu presupuesto</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre completo</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" name="phone" placeholder="Tu teléfono" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Tu email" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Servicio que necesitas</label>
+            <select id="service" name="service">
+              <option value="">Selecciona un servicio...</option>
+              <option value="proyecto">Proyecto de Arquitectura</option>
+              <option value="project-management">Project Management</option>
+              <option value="certificado">Certificado Energético</option>
+              <option value="tasacion">Tasación / Inmobiliaria</option>
+              <option value="iee">IEE / Ayudas Económicas</option>
+              <option value="otro">Otros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Cuéntanos brevemente tu proyecto o consulta..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP ===== -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3081.048491608715!2d-0.2652388!3d39.0729896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDA0JzIyLjgiTiAwwrAxNSc1NS4yIlc!5e0!3m2!1ses!2ses!4v1"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Ubicación de Arquitectura ACF en Tavernes de la Valldigna">
+    </iframe>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="margin-bottom:12px;">
+            <div class="logo-icon" style="width:36px;height:36px;font-size:0.9rem;">ACF</div>
+            <span class="logo-text">Arquitectura <span>ACF</span></span>
+          </a>
+          <p>Estudio de Arquitectura en Tavernes de la Valldigna, Valencia. Más de 15 años ofreciendo soluciones profesionales en arquitectura, project management, certificación energética y tasaciones.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Servicios</h4>
+          <a href="#services">Proyectos de Arquitectura</a>
+          <a href="#services">Project Management</a>
+          <a href="#services">Certificados Energéticos</a>
+          <a href="#services">Tasaciones</a>
+          <a href="#iee">IEE &amp; Ayudas</a>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <a href="#about">Sobre nosotros</a>
+          <a href="#contact">Contacto</a>
+          <a href="https://arquitecturacf.es/noticias/" target="_blank" rel="noopener">Blog</a>
+          <a href="https://arquitecturacf.es/ayudas-economicas/" target="_blank" rel="noopener">Ayudas Económicas</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contacto</h4>
+          <a href="tel:+34962044920">+34 962 04 49 20</a>
+          <a href="mailto:info@arquitecturacf.es">info@arquitecturacf.es</a>
+          <a href="https://maps.google.com/?q=Passeig+Colon+36+Tavernes+de+la+Valldigna" target="_blank" rel="noopener">Passeig Colon, 36</a>
+          <a href="https://arquitecturacf.es" target="_blank" rel="noopener">arquitecturacf.es</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Arquitectura ACF. Todos los derechos reservados.</span>
+        <div>
+          <a href="#">Aviso Legal</a>
+          <span style="margin:0 8px;opacity:0.2;">|</span>
+          <a href="#">Política de Privacidad</a>
+          <span style="margin:0 8px;opacity:0.2;">|</span>
+          <a href="#">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleMenu() {
+      navLinks.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) toggleMenu();
+      });
+    });
+  </script>
+
+</body>
+</html>
